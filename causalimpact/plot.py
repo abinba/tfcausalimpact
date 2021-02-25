@@ -26,12 +26,15 @@ def plot(
     pre_data: pd.DataFrame,
     post_data: pd.DataFrame,
     panels=['original', 'pointwise', 'cumulative'],
-    figsize=(10, 7)
+    figsize=(10, 7),
+    savefig_path=None
 ) -> None:
     """Plots inferences results related to causal impact analysis.
 
     Args
     ----
+      savefig_path: string.
+        Indicates the path for figure to save.
       panels: list.
         Indicates which plot should be considered in the graphics.
       figsize: tuple.
@@ -132,7 +135,8 @@ def plot(
         ax.axhline(y=0, color='gray', linestyle='--')
         ax.legend()
         ax.grid(True, color='gainsboro')
-    plt.show()
+    # plt.show()
+    plt.savefig(savefig_path)
 
 
 def get_plotter():  # pragma: no cover
