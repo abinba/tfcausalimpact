@@ -223,13 +223,15 @@ class CausalImpact():
     def plot(
         self,
         panels: List[str] = ['original', 'pointwise', 'cumulative'],
-        figsize: Tuple[int] = (10, 7)
+        figsize: Tuple[int] = (10, 7),
+        savefig_path = None
     ) -> None:
         """
         Plots the graphic with results associated to Causal Impact.
 
         Args
         ----
+          savefig_path: str.
           panels: List[str]
               Which graphics to plot. 'original' plots the original data, forecasts means
               and confidence intervals related to the fitted model.
@@ -240,7 +242,7 @@ class CausalImpact():
               Sets the width and height of the figure to plot.
         """
         plotter.plot(self.inferences, self.pre_data, self.post_data, panels=panels,
-                     figsize=figsize)
+                     figsize=figsize, savefig_path=savefig_path)
 
     def summary(self, output: str = 'summary', digits: int = 2) -> str:
         """
